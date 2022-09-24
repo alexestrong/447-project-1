@@ -1,0 +1,199 @@
+.App {
+  /*text-align: center;*/
+
+  background-color: #282c34;
+  min-height: 100vh;
+  color: white;
+  padding: 20px;
+}
+
+.row-header-1 {
+  /*text-align: center;*/
+  text-align: center;
+}
+
+th {
+  background-color: rgb(108, 29, 186);
+}
+
+tr:nth-child(even) {
+  background-color: #384757;
+}
+
+.table-divider {
+  background-color: #ffffff;
+  opacity: 10%;
+}
+
+.btn {
+  padding-top: .5% !important;
+  padding-bottom: .5% !important;
+  border: none !important;
+}
+
+.btn-success {
+  background-color: #0f6efd !important;
+}
+
+.btn-danger {
+  background-color: #6d262c !important;
+}
+
+.mb-3 {
+  display: block !important;
+  display: contents;
+  align-content: center !important;
+  padding-top: 20px;
+  padding-left: 15%;
+  padding-right: 15%;
+  border-radius: 6px !important;
+  color: #ffffff !important;
+  margin-left: 10% !important;
+  margin-right: 10% !important;
+}
+
+.form-control {
+  background-color: #2C3845 !important;
+  color: white !important;
+}
+
+/* UNFORMATTED CSS */
+.insert-box {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 6px;
+  border: none;
+
+  background: #6e6d7000;
+  color: #ffffff;
+  margin-left: 40%;
+  margin-right: 40%;
+}
+
+
+.table-title-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items:flex-start;
+  justify-content: center;
+}
+
+.table-title {
+
+  /*
+  transition: color .6s ease-in-out, box-shadow .6s ease-in-out;
+  */
+  background:
+      linear-gradient(to right,
+        rgba(100, 200, 200, 1),
+        rgba(100, 200, 200, 1)),
+      linear-gradient(to right,
+        rgba(255, 0, 0, 1),
+        rgba(255, 0, 180, 1),
+        rgba(0, 100, 200, 1));
+    background-size: 150% 3px, 0 3px;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 500ms;
+}
+
+.table-title:hover {
+
+  /*
+  box-shadow: inset 400px 0 0 0 #54b3d6;
+  color: white;*/
+  background-size: 0 3px, 100% 3px;
+}
+
+
+.student-table {
+  border-spacing: 1;
+  text-align: center;
+  border-collapse: collapse;
+  background: #2C3845;
+  border-radius: 6px;
+  overflow: hidden;
+  max-width: 80%;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  grid: 30%;
+}
+.instructor-table {
+  border-spacing: 1;
+  text-align: center;
+  border-collapse: collapse;
+  background: #2C3845;
+  border-radius: 6px;
+  overflow: hidden;
+  max-width: 80%;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  grid: 30%;
+}
+.course-table {
+  border-spacing: 1;
+  text-align: center;
+  border-collapse: collapse;
+  background: #2C3845;
+  border-radius: 6px;
+  overflow: hidden;
+  max-width: 80%;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  grid: 30%;
+}
+.entity-table {
+  border-spacing: 1;
+  text-align: center;
+  border-collapse: collapse;
+  background: #2C3845;
+  border-radius: 6px;
+  overflow: hidden;
+  max-width: 80%;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  grid: 30%;
+}
+
+
+.emoji{
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  width:fit-content;
+}
+
+.emoji:hover{
+  animation: effect 0.4s infinite;
+    }
+  
+    @keyframes effect {
+        0% {
+            transform: translateX(0px) rotate(0deg);
+        }
+  
+        20% {
+            transform: translateX(-4px) rotate(-4deg);
+        }
+  
+        40% {
+            transform: translateX(-2px) rotate(-2deg);
+        }
+  
+        60% {
+            transform: translateX(4px) rotate(4deg);
+        }
+  
+        80% {
+            transform: translateX(2px) rotate(2deg);
+        }
+  
+        100% {
+            transform: translateX(0px) rotate(0deg);
+        }
+}
