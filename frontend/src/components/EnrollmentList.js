@@ -1,17 +1,17 @@
 import React from 'react'
 import APIService from './APIService'
 
-export default function CourseList(props) {
+export default function EnrollmentList(props) {
 
     // Corresponds with the update button
-    const editCourse = (course) => {
-        props.editCourse(course)
+    const editEnrollment = (enrollment) => {
+        props.editEnrollment(enrollment)
     }
 
     // Corresponds with the delete button
-    const deleteCourse = (course) => {
-        APIService.DeleteCourse(course.courseId)
-            .then(() => props.deleteCourse(course))
+    const deleteEnrollment = (enrollment) => {
+        APIService.DeleteEnrollment(enrollment.enrollmentId)
+            .then(() => props.deleteEnrollment(enrollment))
     }
 
     return (
@@ -19,33 +19,35 @@ export default function CourseList(props) {
             <table className='entity-table'>
                 <thead>
                     <tr>
+                        <th>Enrollment ID</th>
+                        <th>Enrollment Grade</th>
+                        <th>Student ID</th>
                         <th>Course ID</th>
-                        <th>Course Name</th>
-                        <th>Instructor ID</th>
                         <th></th>
-                        <th>Update Course</th>
-                        <th>Delete Course</th>
+                        <th>Update Enrollment</th>
+                        <th>Delete Enrollment</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    {props.courses && props.courses.map(course => {
+                    {props.enrollments && props.enrollments.map(enrollment => {
                         return (
                             <tr>
-                                <td><p>{course.courseId}</p></td>
-                                <td><p>{course.courseName}</p></td>
-                                <td><p>{course.instructorId}</p></td>
+                                <td><p>{enrollment.enrollmentId}</p></td>
+                                <td><p>{enrollment.enrollmentGrade}</p></td>
+                                <td><p>{enrollment.studentId}</p></td>
+                                <td><p>{enrollment.courseId}</p></td>
 
                                 <td className='table-divider'></td>
                                 <td>
                                     <button className="btn btn-primary"
-                                        onClick={() => editCourse(course)}
+                                        onClick={() => editEnrollment(enrollment)}
                                     >Update</button>
                                 </td>
 
                                 <td>
                                     <button className="btn btn-danger"
-                                        onClick={() => deleteCourse(course)}
+                                        onClick={() => deleteEnrollment(enrollment)}
                                     >Delete</button>
                                 </td>
 

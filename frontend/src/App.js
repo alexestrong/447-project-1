@@ -6,14 +6,16 @@ import InstructorList from './components/InstructorList';
 import InstructorForm from './components/InstructorForm';
 import CourseList from './components/CourseList';
 import CourseForm from './components/CourseForm';
+import EnrollmentList from './components/EnrollmentList';
+import EnrollmentForm from './components/EnrollmentForm';
 
 function App() {
 
-/********************************************************************
-*                                                                   *
-*                       STUDENT SETUP                               *
-*                                                                   *
-********************************************************************/
+  /********************************************************************
+  *                                                                   *
+  *                       STUDENT SETUP                               *
+  *                                                                   *
+  ********************************************************************/
   const [students, setStudents] = useState([])
   const [editedStudent, setEditedStudent] = useState(null)
 
@@ -70,11 +72,11 @@ function App() {
     setStudents(new_students)
   }
 
-/********************************************************************
-*                                                                   *
-*                       INSTRUCTOR SETUP                            *
-*                                                                   *
-********************************************************************/
+  /********************************************************************
+  *                                                                   *
+  *                       INSTRUCTOR SETUP                            *
+  *                                                                   *
+  ********************************************************************/
   const [instructors, setInstructors] = useState([])
   const [editedInstructor, setEditedInstructor] = useState(null)
 
@@ -131,11 +133,11 @@ function App() {
     setInstructors(new_instructors)
   }
 
-/********************************************************************
-*                                                                   *
-*                       COURSE SETUP                                *
-*                                                                   *
-********************************************************************/
+  /********************************************************************
+  *                                                                   *
+  *                       COURSE SETUP                                *
+  *                                                                   *
+  ********************************************************************/
   const [courses, setCourses] = useState([])
   const [editedCourse, setEditedCourse] = useState(null)
 
@@ -192,6 +194,74 @@ function App() {
     setCourses(new_courses)
   }
 
+  /********************************************************************
+  *                                                                   *
+  *                       ENROLLMENT SETUP                            *
+  *                                                                   *
+  ********************************************************************/
+  const [enrollments, setEnrollments] = useState([])
+  const [editedEnrollment, setEditedEnrollment] = useState(null)
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:5000/getEnrollments', {
+      'method': 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(resp => resp.json())
+      .then(resp => setEnrollments(resp))
+      .catch(error => console.log(error))
+  }, [])
+
+
+  // editEnrollment will put the updated name into the database
+  const editEnrollment = (enrollment) => {
+    setEditedEnrollment(enrollment)
+  }
+
+  // updatedEnrollment will rerender the updated enrollment name onto the HTML website without refreshing
+  const updatedEnrollment = (enrollment) => {
+    const new_enrollment = enrollments.map(my_enrollment => {
+      if (my_enrollment.enrollmentId === enrollment.enrollmentId) {
+        return enrollment
+      } else {
+        return my_enrollment
+      }
+    })
+    setEnrollments(new_enrollment)
+  }
+
+  // Insertion of enrollments
+  const openEnrollmentForm = () => {
+    setEditedEnrollment({ enrollmentGrade: '', studentId: '', courseId: '' })
+  }
+
+  // To rerender the HTML to see live insertion
+  const insertedEnrollment = (enrollment) => {
+    const new_enrollments = [...enrollments, enrollment]
+    setEnrollments(new_enrollments)
+  }
+
+  // To rerender the HTML to see live deletion
+  const deleteEnrollment = (enrollment) => {
+    const new_enrollments = enrollments.filter(myenrollment => {
+      if (myenrollment.enrollmentId === enrollment.enrollmentId) {
+        return false;
+      }
+      return true
+    })
+
+    setEnrollments(new_enrollments)
+  }
+
+
+
+  /********************************************************************
+  *                                                                   *
+  *                       RETURN HTML                                 *
+  *                                                                   *
+  ********************************************************************/
 
 
   return (
@@ -204,9 +274,9 @@ function App() {
 
       <br /><hr></hr><br />
       <div className='table-title-container'>
-      <div className="table-title">
-        <h2>Students </h2>
-      </div>
+        <div className="table-title">
+          <h2>Students </h2>
+        </div>
       </div>
       <br /><br />
 
@@ -221,9 +291,9 @@ function App() {
 
       <br /><br /><hr></hr><br /><br />
       <div className='table-title-container'>
-      <div className="table-title">
-        <h2>Instructors </h2>
-      </div>
+        <div className="table-title">
+          <h2>Instructors </h2>
+        </div>
       </div>
       <br /><br />
 
@@ -238,9 +308,9 @@ function App() {
 
       <br /><br /><hr></hr><br /><br />
       <div className='table-title-container'>
-      <div className="table-title">
-        <h2>Courses </h2>
-      </div>
+        <div className="table-title">
+          <h2>Courses </h2>
+        </div>
       </div>
       <br /><br />
 
@@ -252,6 +322,25 @@ function App() {
         >Create Course</button>
       </div>
       {editedCourse ? <CourseForm course={editedCourse} updatedCourse={updatedCourse} insertedCourse={insertedCourse} /> : null}
+
+
+
+      <br /><br /><hr></hr><br /><br />
+      <div className='table-title-container'>
+        <div className="table-title">
+          <h2>Enrollments </h2>
+        </div>
+      </div>
+      <br /><br />
+
+      <EnrollmentList enrollments={enrollments} editEnrollment={editEnrollment} deleteEnrollment={deleteEnrollment} />
+      <div className="insert-box">
+        <button
+          className="btn btn-success"
+          onClick={openEnrollmentForm}
+        >Create Enrollment</button>
+      </div>
+      {editedEnrollment ? <EnrollmentForm enrollment={editedEnrollment} updatedEnrollment={updatedEnrollment} insertedEnrollment={insertedEnrollment} /> : null}
 
 
     </div>

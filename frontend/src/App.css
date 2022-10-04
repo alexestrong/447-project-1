@@ -108,45 +108,6 @@ tr:nth-child(even) {
 }
 
 
-.student-table {
-  border-spacing: 1;
-  text-align: center;
-  border-collapse: collapse;
-  background: #2C3845;
-  border-radius: 6px;
-  overflow: hidden;
-  max-width: 80%;
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
-  grid: 30%;
-}
-.instructor-table {
-  border-spacing: 1;
-  text-align: center;
-  border-collapse: collapse;
-  background: #2C3845;
-  border-radius: 6px;
-  overflow: hidden;
-  max-width: 80%;
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
-  grid: 30%;
-}
-.course-table {
-  border-spacing: 1;
-  text-align: center;
-  border-collapse: collapse;
-  background: #2C3845;
-  border-radius: 6px;
-  overflow: hidden;
-  max-width: 80%;
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
-  grid: 30%;
-}
 .entity-table {
   border-spacing: 1;
   text-align: center;

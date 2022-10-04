@@ -120,4 +120,47 @@ export default class APIService {
             },
         })
     }
+
+
+
+
+    /********************************************************************
+    *                                                                   *
+    *                       ENROLLMENTS API CALLS                       *
+    *                                                                   *
+    ********************************************************************/
+
+    // Makes call to the API backend to update an existing enrollment
+    static UpdateEnrollment(id, body) {
+        return fetch(`http://127.0.0.1:5000/updateEnrollment/${id}/`, {
+            'method': 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+            .then(resp => resp.json())
+    }
+
+    // Makes call to the API backend to insert a new enrollment
+    static InsertEnrollment(body) {
+        return fetch(`http://127.0.0.1:5000/addEnrollment`, {
+            'method': 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+            .then(resp => resp.json())
+    }
+
+    // Makes call to the API backend to delete an existing enrollment
+    static DeleteEnrollment(id) {
+        return fetch(`http://127.0.0.1:5000/deleteEnrollment/${id}/`, {
+            'method': 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+    }
 }

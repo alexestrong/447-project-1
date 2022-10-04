@@ -16,7 +16,7 @@ export default function StudentList(props) {
 
   return (
     <div>
-      <table className='student-table'>
+      <table className='entity-table'>
         <thead>
           <tr>
             <th>Student ID</th>

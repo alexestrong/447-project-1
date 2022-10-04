@@ -16,7 +16,7 @@ export default function InstructorList(props) {
 
     return (
         <div>
-            <table className='instructor-table'>
+            <table className='entity-table'>
                 <thead>
                     <tr>
                         <th>Instructor ID</th>
