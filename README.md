@@ -27,8 +27,7 @@ Name: Alex Strong
     root:''
     ```
     You will enter your mySQL server username where "root" is located. If your password is blank you can leave the quotes. Otherwise, if your password is not blank, then you will not need quotes and you will enter your mySQL server password on the right of the colon
-<br>
-<br>
+
 11) If you chose a different name for the database, then replace the name at the end of the line with the name of the database you chose
     ```
     university_ia
